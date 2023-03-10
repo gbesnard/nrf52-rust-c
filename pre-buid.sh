@@ -11,8 +11,6 @@ else
     cargo build --target thumbv7em-none-eabihf --release
 fi
 
-cbindgen --config cbindgen.toml --crate rust_embedded_lib --lang c --output rust_embedded_lib.h
-
-cd -
+cbindgen --config cbindgen.toml --crate rust_embedded_lib --lang c --output ../rust_embedded_lib.h
 
 exit 0

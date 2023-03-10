@@ -43,6 +43,7 @@
  * This file contains the source code for a sample server application using the LED Button service.
  */
 
+#include "main.h"
 #include <stdint.h>
 #include <string.h>
 #include "nordic_common.h"
@@ -561,6 +562,10 @@ static void idle_state_handle(void)
     }
 }
 
+void rust_function_cb(void)
+{
+    NRF_LOG_INFO("C callback called from rust.");
+}
 
 /**@brief Function for application main entry.
  */
@@ -574,9 +579,17 @@ int main(void)
     power_management_init();
 
     // Execute a very important rusty function.
-    uint32_t number = 2;
-    uint32_t res = rust_function(number);
-    NRF_LOG_INFO("rust_function returned %u.", res);
+    foo_struct_t foo_struct;
+    foo_struct.n = 0;
+    foo_struct.state = STATE_INIT;
+    for (uint8_t i = 0; i < 8; i++) {
+        uint32_t res = rust_function(&foo_struct);
+        if (SUCCESS_CODE == res) {
+            NRF_LOG_INFO("rust_function returned %u", res);
+            NRF_LOG_INFO("foo_struct.n: %u", foo_struct.n);
+            break;
+        }
+    }
 
     ble_stack_init();
     gap_params_init();

@@ -9,3 +9,7 @@ path = "src/lib.rs"
 crate-type = ["staticlib"] # Creates static lib
 
 [dependencies]
+cty = "0.2.2"
+
+[build-dependencies]
+bindgen = "0.64.0"
