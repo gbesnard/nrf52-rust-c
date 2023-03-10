@@ -8,10 +8,13 @@ Project template is based on "ble app blinky" example from nRF5 SDK.
 
 pre-build.sh will compile rust library and generate C header using cbindgen at each compile from Segger Embedded Studio.
 
+# Capability
+
+- debugger seems to work for rust code, but we have to specify where to find .rs files, not found automatically by the IDE.
+- can pass and return basic type to and from rust function.
+
 # Improvement
 
-- debug rust code with source
-- test returning some value and interacting with c code
 - test interacting with peripheral
 - test the other way around : C static library alongside Rust code
 - try unofficial nrf HAL from https://github.com/nrf-rs/nrf-hal

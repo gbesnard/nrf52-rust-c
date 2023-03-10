@@ -572,6 +572,12 @@ int main(void)
     timers_init();
     buttons_init();
     power_management_init();
+
+    // Execute a very important rusty function.
+    uint32_t number = 2;
+    uint32_t res = rust_function(number);
+    NRF_LOG_INFO("rust_function returned %u.", res);
+
     ble_stack_init();
     gap_params_init();
     gatt_init();
@@ -582,9 +588,6 @@ int main(void)
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
     advertising_start();
-
-    // Execute a very important rusty function.
-    rust_function();
 
     // Enter main loop.
     for (;;)

@@ -1,3 +1,4 @@
 Output
 *.jlink
 *.emSession
+rust_embedded_lib/target/
