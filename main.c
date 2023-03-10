@@ -68,6 +68,8 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
+#include "rust_embedded_lib.h"
+
 
 #define ADVERTISING_LED                 BSP_BOARD_LED_0                         /**< Is on when device is advertising. */
 #define CONNECTED_LED                   BSP_BOARD_LED_1                         /**< Is on when device has connected. */
@@ -580,6 +582,9 @@ int main(void)
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
     advertising_start();
+
+    // Execute a very important rusty function.
+    rust_function();
 
     // Enter main loop.
     for (;;)
