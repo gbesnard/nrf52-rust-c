@@ -6,9 +6,9 @@ echo "pre-build script"
 cd rust_embedded_lib
 
 if [ $1 = "debug" ]; then
-    cargo build --target thumbv7em-none-eabihf
+    cargo build
 else
-    cargo build --target thumbv7em-none-eabihf --release
+    cargo build --release
 fi
 
 cbindgen --config cbindgen.toml --crate rust_embedded_lib --lang c --output ../rust_embedded_lib.h

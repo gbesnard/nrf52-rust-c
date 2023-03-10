@@ -564,7 +564,7 @@ static void idle_state_handle(void)
 
 void rust_function_cb(void)
 {
-    NRF_LOG_INFO("C callback called from rust.");
+    NRF_LOG_INFO("C callback called from rust");
 }
 
 /**@brief Function for application main entry.
@@ -599,7 +599,6 @@ int main(void)
     conn_params_init();
 
     // Start execution.
-    NRF_LOG_INFO("Blinky example started.");
     advertising_start();
 
     // Enter main loop.
